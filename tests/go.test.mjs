@@ -129,7 +129,7 @@ for (const [name, lines] of Object.entries(cases)) {
 }
 
 test('the fixture tokenizes within the per-line budget Orca allows', () => {
-  const lines = tokenize(grammar, readFileSync(path('examples/sample.go'), 'utf8'));
+  const lines = tokenize(grammar, readFileSync(path('tests/fixtures/constructs.go'), 'utf8'));
   assert.equal(lines.filter((line) => line.plain).length, 0, 'no line may fall back to plain');
   // Orca retries a slow line; the margin keeps a loaded machine from flaking the test.
   const slowest = lines.reduce((a, b) => (b.ms > a.ms ? b : a));

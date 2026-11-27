@@ -7,6 +7,12 @@ Orca highlights Go out of the box, but with a tokenizer that only knows keywords
 and numbers: every identifier is one colour. This plugin replaces it with a grammar that tells
 names apart by what they are, in the way GoLand does.
 
+| Orca's built-in Go highlighting | With Go Syntax |
+| --- | --- |
+| ![Go code in Orca where every identifier is the same colour](images/before.png) | ![The same code with types, functions, constants, fields and locals each in their own colour](images/after.png) |
+
+The same file, [`examples/sample.go`](examples/sample.go), in the same theme.
+
 **Highlighting only.** No completion, navigation or diagnostics. The plugin is data: it runs no
 code and asks for no access.
 
@@ -100,8 +106,9 @@ changes that table, the tests keep passing but stop describing what Orca draws; 
 | `syntaxes/*.language-configuration.json` | Comment markers, brackets, auto-closing pairs |
 | `third_party/go-syntax/` | Upstream Go grammar and its licence |
 | `tools/` | Grammar build script, tokenizer and token printer |
-| `examples/` | Fixtures to open in Orca |
-| `tests/` | Tokenizer tests |
+| `examples/` | A short Go file and a `go.mod` to open in Orca |
+| `images/` | The screenshots above |
+| `tests/` | Tokenizer tests, and the longer Go fixture they time |
 
 ## Licence
 
