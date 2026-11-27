@@ -1,0 +1,17 @@
+{
+  "name": "orca-go-syntax",
+  "version": "0.1.0",
+  "description": "Go Syntax — a data-only Orca plugin",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "tokens": "node tools/tokens.mjs",
+    "validate": "orca plugin validate . --json"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.0"
+  }
+}

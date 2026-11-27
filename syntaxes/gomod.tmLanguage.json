@@ -1,0 +1,102 @@
+{
+  "name": "Go Module",
+  "scopeName": "source.gomod",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#block" },
+    { "include": "#directive" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.double-slash.gomod",
+      "match": "//.*$"
+    },
+    "block": {
+      "comment": "a directive with its arguments in a parenthesised block, one per line",
+      "begin": "^\\s*(require|replace|exclude|retract|use|godebug|tool|ignore)\\s*(\\()",
+      "beginCaptures": {
+        "1": { "name": "keyword.other.directive.gomod" },
+        "2": { "name": "punctuation.section.block.begin.gomod" }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": { "name": "punctuation.section.block.end.gomod" }
+      },
+      "patterns": [{ "include": "#arguments" }]
+    },
+    "directive": {
+      "comment": "a directive on one line",
+      "begin": "^\\s*(module|go|toolchain|require|replace|exclude|retract|use|godebug|tool|ignore)\\b",
+      "beginCaptures": {
+        "1": { "name": "keyword.other.directive.gomod" }
+      },
+      "end": "$",
+      "patterns": [{ "include": "#arguments" }]
+    },
+    "arguments": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#string" },
+        { "include": "#arrow" },
+        { "include": "#version" },
+        { "include": "#setting" },
+        { "include": "#punctuation" },
+        { "include": "#path" }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.gomod",
+          "begin": "\"",
+          "end": "\"|$",
+          "patterns": [{ "name": "constant.other.escape.gomod", "match": "\\\\." }]
+        },
+        {
+          "name": "string.quoted.raw.gomod",
+          "begin": "`",
+          "end": "`"
+        }
+      ]
+    },
+    "arrow": {
+      "name": "keyword.operator.replace.gomod",
+      "match": "=>"
+    },
+    "version": {
+      "patterns": [
+        {
+          "comment": "a module version: v1.2.3, v0.0.0-20240102150405-abcdef123456, v2.0.0+incompatible",
+          "name": "constant.numeric.version.gomod",
+          "match": "(?<![\\w./-])v\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?(?![\\w/])"
+        },
+        {
+          "comment": "a Go or toolchain version: 1.22, 1.22.3, 1.23rc1, go1.22.3",
+          "name": "constant.numeric.version.gomod",
+          "match": "(?<![\\w./-])(?:go)?\\d+\\.\\d+(?:\\.\\d+|(?:rc|beta)\\d+)?(?![\\w./-])"
+        }
+      ]
+    },
+    "setting": {
+      "comment": "a godebug setting: key=value",
+      "match": "(?<![\\w./-])([A-Za-z_]\\w*)(=)([^\\s,)]*)",
+      "captures": {
+        "1": { "name": "variable.other.setting.gomod" },
+        "2": { "name": "keyword.operator.assignment.gomod" },
+        "3": { "name": "constant.other.setting.gomod" }
+      }
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.definition.range.begin.gomod", "match": "\\[" },
+        { "name": "punctuation.definition.range.end.gomod", "match": "\\]" },
+        { "name": "punctuation.separator.gomod", "match": "," }
+      ]
+    },
+    "path": {
+      "comment": "a module path, or a directory in a replace or use",
+      "name": "string.unquoted.path.gomod",
+      "match": "[^\\s()\\[\\],\"`]+"
+    }
+  }
+}

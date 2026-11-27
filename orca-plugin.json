@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stablyai/orca/main/docs/schemas/plugins/orca-plugin.v2.schema.json",
+  "manifestVersion": 2,
+  "execution": "data",
+  "id": "go-syntax",
+  "name": "Go Syntax",
+  "version": "0.1.0",
+  "description": "Rich Go highlighting: types, functions, parameters, fields and constants each get their own colour. Also highlights go.mod and go.work.",
+  "repository": "https://github.com/saltshakerlabs/orca-go-syntax",
+  "license": "MIT",
+  "engines": { "orca": ">=1.4.246" },
+  "capabilities": [],
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "go",
+        "title": "Go",
+        "scopeName": "source.go",
+        "path": "syntaxes/go.tmLanguage.json",
+        "configuration": "syntaxes/go.language-configuration.json",
+        "extensions": [".go"]
+      },
+      {
+        "id": "gomod",
+        "title": "Go Module",
+        "scopeName": "source.gomod",
+        "path": "syntaxes/gomod.tmLanguage.json",
+        "configuration": "syntaxes/gomod.language-configuration.json",
+        "filenames": ["go.mod", "go.work"]
+      }
+    ]
+  }
+}
