@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Prints how Orca would colour a file: each token followed by its token type.
+// Prints how Orca would color a file: each token followed by its token type.
 //   node tools/tokens.mjs <file> [--grammar <path>]... [--scopes] [--lines 10-40]
 // Untyped tokens (default foreground) print bare; typed ones print as text‹type›.
 import { readFileSync } from 'node:fs';

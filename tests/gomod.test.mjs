@@ -56,7 +56,7 @@ test('a directive name is a keyword only at the start of a line', () => {
   assert.equal(last('use ./go'), 'use‹keyword› ./go‹string›');
 });
 
-test('the fixture has no line left without a colour', () => {
+test('the fixture has no line left without a color', () => {
   for (const line of tokenize(grammar, readFileSync(path('examples/gomod/go.mod'), 'utf8'))) {
     if (!line.text.trim()) continue;
     assert.ok(line.tokens.every((token) => !token.text.trim() || token.type), line.text);

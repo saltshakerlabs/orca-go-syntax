@@ -12,7 +12,7 @@
       "match": "//.*$"
     },
     "block": {
-      "comment": "a directive with its arguments in a parenthesised block, one per line",
+      "comment": "a directive with its arguments in a parenthesized block, one per line",
       "begin": "^\\s*(require|replace|exclude|retract|use|godebug|tool|ignore)\\s*(\\()",
       "beginCaptures": {
         "1": { "name": "keyword.other.directive.gomod" },

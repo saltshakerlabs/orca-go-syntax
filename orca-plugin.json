@@ -5,7 +5,7 @@
   "id": "go-syntax",
   "name": "Go Syntax",
   "version": "0.1.0",
-  "description": "Rich Go highlighting: types, functions, parameters, fields and constants each get their own colour. Also highlights go.mod and go.work.",
+  "description": "Rich Go highlighting: types, functions, parameters, fields and constants each get their own color. Also highlights go.mod and go.work.",
   "repository": "https://github.com/saltshakerlabs/orca-go-syntax",
   "license": "MIT",
   "engines": { "orca": ">=1.4.246" },

@@ -1,4 +1,4 @@
-// Tokenizes Go with the real TextMate engine and checks the token types Orca would colour.
+// Tokenizes Go with the real TextMate engine and checks the token types Orca would color.
 // A token is written `text‹type›`; a bare token has no type and takes the default foreground.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -27,7 +27,7 @@ const cases = {
       'type‹keyword› Pair‹type› [‹delimiter› K‹type› comparable‹type› ,‹delimiter› V‹type› any‹type› ]‹delimiter› struct‹keyword› {‹delimiter›',
     ],
   ],
-  'struct fields: exported ones are coloured, and a package qualifier never is': [
+  'struct fields: exported ones are colored, and a package qualifier never is': [
     ['type T struct {\n\tName string', 'Name‹identifier› string‹type›'],
     ['type T struct {\n\tcloseErr error', 'closeErr error‹type›'],
     ['type T struct {\n\tw *sql.DB', 'w *‹operator› sql .‹delimiter› DB‹type›'],
@@ -56,7 +56,7 @@ const cases = {
     ],
     ['\tout := make([]U, 0, len(in))', 'out :=‹operator› make‹function› (‹delimiter› [‹delimiter› ]‹delimiter› U‹type› ,‹delimiter› 0‹number› ,‹delimiter› len‹function› (‹delimiter› in )‹delimiter› )‹delimiter›'],
   ],
-  'variables: locals take the default foreground, exported names are coloured': [
+  'variables: locals take the default foreground, exported names are colored': [
     ['var ErrStopped = errors.New("x")', 'var‹keyword› ErrStopped‹identifier› =‹operator› errors .‹delimiter› New‹function› (‹delimiter› "‹string› x‹string› "‹string› )‹delimiter›'],
     ['var defaultTimeout = 10 * time.Second', 'var‹keyword› defaultTimeout =‹operator› 10‹number› *‹operator› time .‹delimiter› Second‹constant›'],
     ['\treturn len(rs.Records) == 0', 'return‹keyword.flow› len‹function› (‹delimiter› rs .‹delimiter› Records‹identifier› )‹delimiter› ==‹operator› 0‹number›'],
@@ -82,7 +82,7 @@ const cases = {
     ['const (\n\tphaseOpen = iota\n\tphaseClosing', 'phaseClosing‹constant›'],
     ['\tok := true', 'ok :=‹operator› true‹constant›'],
   ],
-  'literals: a number is one colour, and verbs and escapes stand out in a string': [
+  'literals: a number is one color, and verbs and escapes stand out in a string': [
     ['\tx := 1.5e3', 'x :=‹operator› 1‹number› .‹number› 5‹number› e‹number› 3‹number›'],
     ['\tx := 0b1010_0101', 'x :=‹operator› 0b‹number› 1010‹number› _‹number› 0101‹number›'],
     ['\tx := 0x1F', 'x :=‹operator› 0x‹number› 1F‹number›'],
@@ -90,7 +90,7 @@ const cases = {
     ["\tr := 'a'", "r :=‹operator› '‹string› a‹string› '‹string›"],
     ['\ts := `raw %d`', 's :=‹operator› `‹string› raw‹string› %d‹regexp› `‹string›'],
   ],
-  'comments: a name from the code is left out of the comment colour': [
+  'comments: a name from the code is left out of the comment color': [
     ['// Store is an open database file.', '//‹comment› Store is an open database file.‹comment›'],
     ['// pragmas are the settings.', '//‹comment› pragmas are the settings.‹comment›'],
     ['// A version may rebuild a table.', '// A version may rebuild a table.‹comment›'],

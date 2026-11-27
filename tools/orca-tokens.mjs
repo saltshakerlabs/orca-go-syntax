@@ -126,7 +126,7 @@ export function tokenize(grammar, source) {
 
 /**
  * `[text, type]` pairs for one line of code, whitespace dropped. Comment prose is tokenized word
- * by word, so neighbouring comment tokens are joined back into one.
+ * by word, so neighboring comment tokens are joined back into one.
  */
 export function compact(tokens) {
   const out = [];

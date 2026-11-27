@@ -3253,7 +3253,7 @@
           "name": "meta.comment.reference.go"
         },
         {
-          "comment": "capitalised in the middle of a sentence: \"returned by Commit once\"",
+          "comment": "capitalized in the middle of a sentence: \"returned by Commit once\"",
           "match": "(?<=[\\p{Ll}\\d,;:] )(?!(?:Go|I|Unicode|Windows|Linux|Unix|Darwin|Mac|Git|GitHub|Docker|Kubernetes|Postgres|English|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|January|February|March|April|May|June|July|August|September|October|November|December)\\b)\\p{Lu}\\p{Ll}\\w*",
           "name": "meta.comment.reference.go"
         },

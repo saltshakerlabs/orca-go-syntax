@@ -1,5 +1,5 @@
 // Package store is a highlighting fixture: it compiles, and it holds one of
-// each construct the grammar colours.
+// each construct the grammar colors.
 package store
 
 import (

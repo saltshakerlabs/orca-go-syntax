@@ -3,8 +3,8 @@
 // (third_party/go-syntax, github.com/worlpaker/go-syntax, MIT).
 //
 // Upstream finds Go's structure well; what changes here is which scope each token gets, because
-// Orca reduces every scope to one of 24 token types (see tools/orca-tokens.mjs) and a theme colours
-// only those. The target is the GoLand colour model:
+// Orca reduces every scope to one of 24 token types (see tools/orca-tokens.mjs) and a theme colors
+// only those. The target is the GoLand color model:
 //
 //   type names, builtin types          -> type        (entity.name.type, support.type)
 //   function declarations and calls    -> function
@@ -26,18 +26,18 @@ const OUTPUT = new URL('../syntaxes/go.tmLanguage.json', import.meta.url);
 const RENAMES = [
   // Builtin types are types, not keywords.
   [/^storage\.type\.(.+)\.go$/, 'support.type.builtin.$1.go'],
-  // Orca types `constant.language` as a keyword. GoLand colours true, false and iota as constants,
+  // Orca types `constant.language` as a keyword. GoLand colors true, false and iota as constants,
   // and nil as the variable it is.
   [/^constant\.language\.null\.go$/, 'variable.other.builtin.nil.go'],
   [/^constant\.language\.(.+)\.go$/, 'support.constant.builtin.$1.go'],
-  // Keep every part of a number literal one colour: prefixes, exponents, signs and separators.
+  // Keep every part of a number literal one color: prefixes, exponents, signs and separators.
   [/^keyword\.other\.unit\.(.+)\.go$/, 'constant.numeric.unit.$1.go'],
   [/^keyword\.operator\.(?:plus|minus)\.exponent\.(.+)\.go$/, 'constant.numeric.exponent.sign.$1.go'],
   [/^punctuation\.separator\.constant\.numeric\.go$/, 'constant.numeric.separator.go'],
   // A rune reads as a string.
   [/^constant\.other\.rune\.go$/, ''],
   // Format verbs and escapes are a small language inside a string. Orca would type
-  // `constant.character.escape` as plain string, and `constant` cannot be coloured apart from
+  // `constant.character.escape` as plain string, and `constant` cannot be colored apart from
   // numbers; Go has no regexp literals, so its `regexp` type is free to carry them.
   [/^constant\.character\.escape\.go$/, 'string.regexp.escape.go'],
   [/^constant\.other\.placeholder\.go$/, 'string.regexp.placeholder.go'],
@@ -50,7 +50,7 @@ const RENAMES = [
 ];
 
 // Upstream ends most rules in a catch-all `\w+` leaf. Each is swapped for a rule that looks at the
-// identifier itself: Go exports a name by capitalising it, which is all a grammar can know about
+// identifier itself: Go exports a name by capitalizing it, which is all a grammar can know about
 // where a name was declared.
 const LEAVES = {
   'entity.name.type.go': 'orca_type_name',
@@ -77,7 +77,7 @@ const STDLIB_CONSTANTS = {
 const NOT_A_SUBJECT =
   'A|An|The|This|That|These|Those|It|Its|If|In|On|At|As|By|Of|Or|And|But|For|To|From|With|Without|We|You|When|While|Once|After|Before|Because|Since|Each|Every|All|Any|Some|No|Not|Only|Both|Most|Many|One|Two|There|Here|See|Note|NOTE|TODO|FIXME|BUG|XXX|HACK|Deprecated|Package|Copyright|Code|Use|Usage|Example|Examples';
 
-// Capitalised words that turn up mid-sentence in comments and are not names from the code.
+// Capitalized words that turn up mid-sentence in comments and are not names from the code.
 const NOT_A_NAME =
   'Go|I|Unicode|Windows|Linux|Unix|Darwin|Mac|Git|GitHub|Docker|Kubernetes|Postgres|English|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|January|February|March|April|May|June|July|August|September|October|November|December';
 
@@ -128,7 +128,7 @@ const ADDED_RULES = {
       { comment: 'a call: name()', match: '\\b\\p{L}\\w*(?=\\(\\))', name: REFERENCE },
       { comment: 'mixed caps: readerDSN, SchemaVersion', match: '\\b(?:\\p{Ll}[\\p{Ll}\\d]*\\p{Lu}|\\p{Lu}[\\p{Ll}\\d]+\\p{Lu})\\w*', name: REFERENCE },
       {
-        comment: 'capitalised in the middle of a sentence: "returned by Commit once"',
+        comment: 'capitalized in the middle of a sentence: "returned by Commit once"',
         match: `(?<=[\\p{Ll}\\d,;:] )(?!(?:${NOT_A_NAME})\\b)\\p{Lu}\\p{Ll}\\w*`,
         name: REFERENCE,
       },
